@@ -10,10 +10,10 @@ describe "Static pages" do
     it { should have_title('Home') }
   end
 
-  describe "About page" do
+  describe "Over de site" do
     before { visit about_path }
-    it { should have_content('About') }
-    it { should have_title('About') }
+    it { should have_content('Over de site') }
+    it { should have_title('Over de site') }
   end
 
   describe "Help page" do
