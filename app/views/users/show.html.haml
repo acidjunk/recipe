@@ -5,3 +5,16 @@
       %h1
         = gravatar_for @user
         = @user.name
+  .span8
+    - if @user.recipes.any?
+      %h3 Recepten
+      = @user.recipes.count
+      %ol
+        = render @recipes
+      = will_paginate @recipes
+    - if @user.microposts.any?
+      %h3 Microposts
+      = @user.microposts.count
+      %ol
+        git add .
+        = render @microposts

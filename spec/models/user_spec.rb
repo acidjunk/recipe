@@ -15,7 +15,8 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
-
+  it { should respond_to(:microposts) }
+  it { should respond_to(:recipes) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -114,5 +115,56 @@ describe User do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
+
+  describe 'micropost associations' do
+
+    before { @user.save }
+    let!(:older_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.hour.ago)
+    end
+
+    it 'should have the right microposts in the right order' do
+      expect(@user.microposts.to_a).to eq [newer_micropost, older_micropost]
+    end
+
+    it 'should destroy associated microposts' do
+      microposts = @user.microposts.to_a
+      @user.destroy
+      expect(microposts).not_to be_empty
+      microposts.each do |micropost|
+        expect(Micropost.where(id: micropost.id)).to be_empty
+      end
+    end
+
+  end
+
+  describe 'recipe associations' do
+
+    before { @user.save }
+    let!(:older_recipe) do
+      FactoryGirl.create(:recipe, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_recipe) do
+      FactoryGirl.create(:recipe, user: @user, created_at: 1.hour.ago)
+    end
+
+    it 'should have the right recipes in the right order' do
+      expect(@user.recipes.to_a).to eq [newer_recipe, older_recipe]
+    end
+
+    it 'should destroy associated recipes' do
+      recipes = @user.recipes.to_a
+      @user.destroy
+      expect(recipes).not_to be_empty
+      recipes.each do |recipe|
+        expect(Recipe.where(id: recipe.id)).to be_empty
+      end
+    end
+
+  end
+
 
 end

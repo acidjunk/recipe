@@ -1,0 +1,8 @@
+%li
+  %span.name= recipe.name
+  %span.content= recipe.content
+  %span.timestamp<
+    Posted
+    = time_ago_in_words(recipe.created_at)
+    ago.
+
