@@ -1,0 +1,9 @@
+%h3 Add recipe
+= form_for(@recipe) do |f|
+  = render 'shared/error_messages', object: f.object
+  =f.label :name
+  =f.text_field :name
+  .field
+    =f.text_area :content, placeholder: 'Compose new recipe...'
+  =f.submit('Post', class:'btn btn-large btn-primary')
+

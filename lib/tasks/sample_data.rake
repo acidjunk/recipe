@@ -23,7 +23,7 @@ namespace :db do
     #Get some sample data for microposts and recipes:
     users = User.all(limit: 6)
     50.times do
-      name = Faker::Lorem.words(2).to_s
+      name = Faker::Lorem.word
       content = Faker::Lorem.sentence(5)
       users.each { |user| user.microposts.create!(content: content) }
       users.each { |user| user.recipes.create!(name: name, content: content) }
