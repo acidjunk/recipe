@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :signed_in_user
 
   def create
-    @recipe = current_user.recipes.build(micropost_params)
+    @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
       flash[:success] = 'Recipe created!'
       redirect_to root_url
@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:content)
+    params.require(:recipe).permit(:name)
     #Todo add name also
   end
 end

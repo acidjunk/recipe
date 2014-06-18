@@ -11,22 +11,24 @@ describe 'Recipe pages' do
     before { visit root_path }
 
     describe 'with invalid information' do
-
       it 'should not create a recipe' do
-        expect { click_button 'Post' }.not_to change(Recipe, :count)
+        expect { click_button 'Post recipe' }.not_to change(Recipe, :count)
       end
 
       describe 'error messages' do
-        before { click_button 'Post' }
+        before { click_button 'Post recipe' }
         it { should have_content('error') }
       end
     end
 
     describe 'with valid information' do
       #TODO: add name field also.
-      before { fill_in 'recipe_content', with: 'Lorem ipsum' }
+      before do
+        fill_in 'recipe_name', with: 'Lorem ipsum'
+        fill_in 'recipe_content', with: 'Lorem ipsum'
+      end
       it 'should create a recipe' do
-        expect { click_button 'Post' }.to change(Recipe, :count).by(1)
+        expect { click_button 'Post recipe' }.to change(Recipe, :count).by(1)
       end
     end
   end
