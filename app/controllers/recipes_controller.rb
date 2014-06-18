@@ -17,8 +17,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:content)
-    params.require(:recipe).permit(:name)
+    params.require(:recipe).permit(:name,:content)
     #Todo add name also
   end
 end
