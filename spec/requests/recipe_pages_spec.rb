@@ -12,11 +12,11 @@ describe 'Recipe pages' do
 
     describe 'with invalid information' do
       it 'should not create a recipe' do
-        expect { click_button 'Post recipe' }.not_to change(Recipe, :count)
+        expect { click_button 'Plaats recept' }.not_to change(Recipe, :count)
       end
 
       describe 'error messages' do
-        before { click_button 'Post recipe' }
+        before { click_button 'Plaats recept' }
         it { should have_content('error') }
       end
     end
@@ -28,7 +28,7 @@ describe 'Recipe pages' do
         fill_in 'recipe_content', with: 'Lorem ipsum'
       end
       it 'should create a recipe' do
-        expect { click_button 'Post recipe' }.to change(Recipe, :count).by(1)
+        expect { click_button 'Plaats recept' }.to change(Recipe, :count).by(1)
       end
     end
   end

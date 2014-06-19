@@ -1,6 +1,10 @@
 class RecipesController < ApplicationController
   before_action :signed_in_user
 
+  def index
+    @recipes = Recipe.paginate(page: params[:page])
+  end
+
   def create
     @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
@@ -18,6 +22,5 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name,:content)
-    #Todo add name also
   end
 end

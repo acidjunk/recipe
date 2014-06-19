@@ -1,7 +1,10 @@
 class StaticPagesController < ApplicationController
   def home
-    @micropost = current_user.microposts.build if signed_in?
-    @recipe = current_user.recipes.build if signed_in?
+    if signed_in?
+      @micropost = current_user.microposts.build
+      @recipe = current_user.recipes.build
+      @feed_items = current_user.feed
+    end
   end
 
   def help
