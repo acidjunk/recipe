@@ -1,7 +1,7 @@
 %h3 Add micropost
-= form_for(@micropost) do |f|
-  = render 'shared/error_messages', object: f.object
+= form_for(@micropost) do |g|
+  = render 'shared/error_messages', object: g.object
   .field
-    =f.text_area :content, placeholder: 'Compose new micropost...'
-  =f.submit('Post micropost', class:'btn btn-large btn-primary')
+    =g.text_area :content, placeholder: 'Compose new micropost...'
+  =g.submit('Post micropost', class:'btn btn-large btn-primary')
 
