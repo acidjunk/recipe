@@ -1,6 +1,6 @@
 %li
   %div.recipe_name= recipe.name
-  %span.content= recipe.content
+  %span.content= raw(recipe.content)
   %span.timestamp<
     #{ time_ago_in_words(recipe.created_at) } geleden geplaats.
   - if current_user?(recipe.user)

@@ -6,7 +6,7 @@
       %b= feed_item.name
   - else
     %h4 Bericht
-  %span.content= feed_item.content
+  %span.content= raw(feed_item.content)
   %span.timestamp #{ time_ago_in_words(feed_item.created_at) } geleden door #{ link_to feed_item.user.name, feed_item.user }
   - if current_user?(feed_item.user)
     %div

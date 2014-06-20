@@ -1,5 +1,5 @@
 %li
-  %span.content= micropost.content
+  %span.content= raw(micropost.content)
   %span.timestamp<
     #{ time_ago_in_words(micropost.created_at) } geleden geplaats.
   - if current_user?(micropost.user)

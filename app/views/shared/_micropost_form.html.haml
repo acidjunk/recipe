@@ -2,6 +2,6 @@
 = form_for(@micropost) do |f|
   = render 'shared/error_messages', object: f.object
   .field
-    =f.text_area :content, placeholder: 'Tik hier je bericht...'
+    =f.bootsy_area :content, editor_options: { link: true, color: false, lists: false, image: false, font_styles: false, color: false, emphasis: true },  rows: 5, class: 'form-control', placeholder: 'Tik hier je bericht...'
   =f.submit('Plaats bericht', class:'btn btn-large btn-primary')
 

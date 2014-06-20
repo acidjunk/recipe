@@ -8,6 +8,9 @@ gem 'rails', '4.0.3'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.11.0'
 
+#Bootsy HTML editor https://github.com/volmer/bootsyr
+gem 'bootsy' 
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 

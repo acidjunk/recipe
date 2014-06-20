@@ -4,6 +4,6 @@
   =f.label :name
   =f.text_field :name
   .field
-    =f.text_area :content, placeholder: 'Tik hier je recept...'
+    =f.bootsy_area :content, editor_options: { link: true, color: false, lists: false, image: false, font_styles: false, color: false, emphasis: true },  rows: 5, class: 'form-control', placeholder: 'Tik hier je recept...'
   =f.submit('Plaats recept', class:'btn btn-large btn-primary')
 
