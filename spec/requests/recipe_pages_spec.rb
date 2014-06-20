@@ -32,4 +32,17 @@ describe 'Recipe pages' do
       end
     end
   end
+
+  describe 'recipe destruction' do
+    before { FactoryGirl.create(:recipe, user: user) }
+
+    describe 'as correct user' do
+      before { visit root_path }
+
+      it 'should delete a recipe' do
+        expect { click_link 'delete' }.to change(Recipe, :count).by(-1)
+      end
+    end
+  end
+
 end

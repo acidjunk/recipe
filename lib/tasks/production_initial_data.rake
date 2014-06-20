@@ -1,3 +1,5 @@
+#To populate the live DB the first time
+# RUN: heroku run rake db:populate_production
 namespace :db do
   desc 'Fill database with initial production data'
   task populate_production: :environment do

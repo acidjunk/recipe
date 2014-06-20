@@ -2,7 +2,8 @@
   %div.recipe_name= recipe.name
   %span.content= recipe.content
   %span.timestamp<
-    Posted
-    = time_ago_in_words(recipe.created_at)
-    ago.
+    #{ time_ago_in_words(recipe.created_at) } geleden geplaats.
+  - if current_user?(recipe.user)
+    =link_to 'delete', recipe, method: :delete, data: { confirm: 'Weet je het zeker?' }, title: recipe.name
+
 

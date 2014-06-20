@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :signed_in_user
+  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :correct_user,   only: :destroy
 
   def index
     @recipes = Recipe.paginate(page: params[:page])
@@ -16,6 +17,8 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    @recipe.destroy
+    redirect_to root_url
   end
 
   private
@@ -23,4 +26,10 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name,:content)
   end
+
+  def correct_user
+    @recipe = current_user.recipes.find_by(id: params[:id])
+    redirect_to root_url if @recipe.nil?
+  end
+
 end
