@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
     @recipes = Recipe.paginate(page: params[:page])
@@ -9,10 +9,22 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
-      flash[:success] = 'Recipe created!'
+      flash[:success] = 'Recept geplaatst!'
       redirect_to root_url
     else
       render 'static_pages/home'
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @recipe.update_attributes(recipe_params)
+      flash[:success] = 'Recipe bijgewerkt'
+      redirect_to root_path
+    else
+      render 'edit'
     end
   end
 

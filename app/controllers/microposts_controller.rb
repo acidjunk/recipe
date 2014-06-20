@@ -1,14 +1,26 @@
 class MicropostsController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      flash[:success] = 'Micropost created!'
+      flash[:success] = 'Bericht geplaatst!'
       redirect_to root_url
     else
       render 'static_pages/home'
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @micropost.update_attributes(micropost_params)
+      flash[:success] = 'Bericht bijgewerkt'
+      redirect_to root_path
+    else
+      render 'edit'
     end
   end
 

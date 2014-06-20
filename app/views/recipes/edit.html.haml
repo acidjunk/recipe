@@ -1,0 +1,11 @@
+=provide(:title, 'Bewerk recept')
+%h1 Bewerk je recept
+.row
+  .span6
+    = form_for @recipe do |f|
+      = render 'shared/error_messages', object: f.object
+      =f.label :name
+      =f.text_field :name
+      =f.label :content
+      =f.text_area :content
+      =f.submit('Bewaar recept', class:'btn btn-large btn-primary')
