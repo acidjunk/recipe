@@ -27,8 +27,8 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    # This is preliminary. See 'Following users' for the full implementation.
-    @combined_sorted=Micropost.from_users_followed_by(self) + Recipe.from_users_followed_by(self).sort{|a,b| a.created_at <=> b.created_at}.reverse
+    temp=Micropost.from_users_followed_by(self) + Recipe.from_users_followed_by(self)
+    @combined_sorted=temp.sort_by{|x| x[:created_at]}.reverse
   end
 
   def following?(other_user)
