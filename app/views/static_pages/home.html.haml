@@ -4,6 +4,8 @@
     %aside.span4
       %section
         =render 'shared/user_info'
+      %section
+        = render 'shared/stats'
       - if @micropost.nil? || @micropost.errors.empty?
         %section
           =render 'shared/recipe_form'

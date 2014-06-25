@@ -1,9 +1,14 @@
 RecipeApp::Application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts
   resources :recipes
+  resources :relationships, only: [:create, :destroy]
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'

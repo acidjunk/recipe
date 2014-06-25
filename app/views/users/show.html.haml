@@ -5,7 +5,11 @@
       %h1
         = gravatar_for @user
         = @user.name
+    %section
+      = render 'shared/stats'
   .span8
+    - if signed_in?
+      = render 'follow_form'
     - if @user.recipes.any?
       %h3 Recepten (#{@user.recipes.count})
       %ol.recipes
