@@ -1,5 +1,9 @@
 %li
   %div.recipe_name= recipe.name
+  -#= image_tag recipe.picture.url
+  - if recipe.picture?
+    = image_tag recipe.picture.url(:medium)
+  -#= image_tag recipe.picture.url(:thumb)
   %span.content= raw(recipe.content)
   %span.timestamp<
     #{ time_ago_in_words(recipe.created_at) } geleden geplaats.

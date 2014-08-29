@@ -11,6 +11,10 @@ gem 'sprockets', '2.11.0'
 #Bootsy HTML editor https://github.com/volmer/bootsyr
 gem 'bootsy' 
 
+#File uploads
+gem 'paperclip', '~> 4.1'
+gem 'aws-sdk'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 

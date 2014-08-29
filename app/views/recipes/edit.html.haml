@@ -2,9 +2,11 @@
 %h1 Bewerk je recept
 .row
   .span6
-    = form_for @recipe do |f|
+    = form_for @recipe, html: { multipart: true } do |f|
       = render 'shared/error_messages', object: f.object
       =f.label :name
       =f.text_field :name
+      =f.label :picture
+      =f.file_field :picture
       =f.bootsy_area :content, editor_options: { link: true, color: false, lists: false, image: false, font_styles: false, color: false, emphasis: true }, rows: 12, class: 'form-control'
       =f.submit('Bewaar recept', class:'btn btn-large btn-primary')

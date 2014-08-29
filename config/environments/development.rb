@@ -26,4 +26,18 @@ RecipeApp::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # TODO : remove when it works
+  # S3 for dev:
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :url => 'recipe-app.s3.amazonaws.com',
+      :path => '/:class/:attachment/:id_partition/:style/:filename',
+      :s3_host_name => 'recipe-app.s3.amazonaws.com',
+      :s3_credentials => {
+          :bucket => 'recipe-app',
+          :access_key_id => 'AKIAJFCIAIG3FT66QJRQ',
+          :secret_access_key => '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'
+      }
+  }
 end

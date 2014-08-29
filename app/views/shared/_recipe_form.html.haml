@@ -1,8 +1,10 @@
 %h3 Nieuw recept
-= form_for(@recipe) do |f|
+= form_for @recipe, html: { multipart: true }  do |f|
   = render 'shared/error_messages', object: f.object
   =f.label :name
   =f.text_field :name
+  =f.label :picture
+  =f.file_field :picture
   .field
     =f.bootsy_area :content, editor_options: { link: true, color: false, lists: false, image: false, font_styles: false, color: false, emphasis: true },  rows: 5, class: 'form-control', placeholder: 'Tik hier je recept...'
   =f.submit('Plaats recept', class:'btn btn-large btn-primary')
