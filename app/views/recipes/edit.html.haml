@@ -9,4 +9,6 @@
       =f.label :picture
       =f.file_field :picture
       =f.bootsy_area :content, editor_options: { link: true, color: false, lists: false, image: false, font_styles: false, color: false, emphasis: true }, rows: 12, class: 'form-control'
+      =f.label :tags
+      =f.text_field :tags
       =f.submit('Bewaar recept', class:'btn btn-large btn-primary')

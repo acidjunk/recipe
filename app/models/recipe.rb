@@ -2,9 +2,11 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
   has_many :ingredient_items
   has_many :ingredients, :through => :ingredient_items
-  has_many :tags, as: :taggable
   has_attached_file :picture, :styles => {large: '940x', medium: '620x', thumb: '180x135'} #940 width, 620 width, 180x135 thumb
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
+
+  acts_as_taggable
+  acts_as_taggable_on :tags
 
   default_scope -> { order('created_at DESC') }
   validates :name, presence: true, length: { maximum: 255 }

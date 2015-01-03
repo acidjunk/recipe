@@ -33,10 +33,14 @@ class RecipesController < ApplicationController
     redirect_to root_url
   end
 
+  def tag_cloud
+    @tags = Recipe.tag_counts_on(:tags)
+  end
+
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name,:content,:picture)
+    params.require(:recipe).permit(:name,:content,:picture,:tag_list)
   end
 
   def correct_user
