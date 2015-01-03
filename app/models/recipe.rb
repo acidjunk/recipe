@@ -3,7 +3,8 @@ class Recipe < ActiveRecord::Base
   has_many :ingredient_items
   has_many :ingredients, :through => :ingredient_items
   has_many :tags, as: :taggable
-  has_attached_file :picture, :styles => { :medium => "800x600>", :thumb => "80x60>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :picture, :styles => {medium: '800x600>', thumb: '80x60>'}
+  #, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
   default_scope -> { order('created_at DESC') }
