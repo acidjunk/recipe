@@ -1,13 +1,16 @@
 %li
-  %div.recipe_name= recipe.name
-  -#= image_tag recipe.picture.url
+  = link_to gravatar_for(recipe.user, size: 30), recipe.user
+  %h3
+    =recipe.name
   - if recipe.picture?
-    = image_tag recipe.picture.url(:medium)
-  -#= image_tag recipe.picture.url(:thumb)
+    = image_tag recipe.picture.url(:large)
   %span.content= raw(recipe.content)
   %span.timestamp<
-    #{ time_ago_in_words(recipe.created_at) } geleden geplaats.
+    #{ time_ago_in_words(recipe.created_at) } geleden geplaats door #{ link_to recipe.user.name, recipe.user }.
   - if current_user?(recipe.user)
-    =link_to 'delete', recipe, method: :delete, data: { confirm: 'Weet je het zeker?' }, title: recipe.name
+    %br
+    =link_to 'bewerk', [:edit, recipe]
+    |
+    =link_to 'wis', recipe, method: :delete, data: { confirm: 'Weet je het zeker?' }, title: recipe.name
 
 

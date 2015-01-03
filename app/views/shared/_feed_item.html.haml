@@ -6,7 +6,7 @@
       %b= feed_item.name
     - if feed_item.picture?
       %br
-      = image_tag feed_item.picture.url(:thumb)
+      = image_tag feed_item.picture.url(:medium)
 
   - else
     %h4 Bericht
