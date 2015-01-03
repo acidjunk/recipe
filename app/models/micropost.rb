@@ -1,5 +1,6 @@
 class Micropost < ActiveRecord::Base
   belongs_to :user
+  has_many :tags, as: :taggable
   default_scope -> { order('created_at DESC') }
   validates :content, presence: true, length: { maximum: 255 }
   validates :user_id, presence: true
